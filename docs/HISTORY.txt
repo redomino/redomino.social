@@ -1,0 +1,15 @@
+Changelog
+=========
+
+1.1 (unreleased)
+----------------
+
+- Nothing changed yet.
+
+
+1.0 (2012-01-12)
+----------------
+
+- Prodotto creato come espansione di sc.social.like ,  ora aggiunge linkedin tra i plugin disponibili. 
+non essendo posibile fare l'override della viewlet ne viene registrata una nuova chiamata redomino.social
+bisogna quindi nascondere la viewlet sc.social.like

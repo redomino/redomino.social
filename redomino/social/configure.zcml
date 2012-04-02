@@ -1,0 +1,25 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:five="http://namespaces.zope.org/five"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:cmf="http://namespaces.zope.org/cmf"
+    i18n_domain="redomino.social">
+
+  <five:registerPackage package="." initialize=".initialize" />
+
+  <include package=".controlpanel" />
+  <include package=".browser" />
+  <include package=".portlets" />
+  <include package="plone.browserlayer" />
+
+  <genericsetup:registerProfile
+      name="default"
+      title="redomino.social"
+      directory="profiles/default"
+      description="Installs the redomino.social package"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+  <!-- -*- extra stuff goes here -*- -->
+  
+</configure>
