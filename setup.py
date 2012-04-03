@@ -19,7 +19,7 @@ version = '1.1dev'
 
 setup(name='redomino.social',
       version=version,
-      description="",
+      description="Enhances sc.social.like with a portlet and others social plugins.",
       long_description=open("README.txt").read() + "\n" +
                        open(os.path.join("docs", "HISTORY.txt")).read(),
       # Get more strings from
@@ -29,9 +29,9 @@ setup(name='redomino.social',
         "Programming Language :: Python",
         ],
       keywords='',
-      author='',
-      author_email='',
-      url='http://svn.plone.org/svn/collective/',
+      author="Andrea D'Este",
+      author_email="andrea.deste@redomino.com",
+      url='https://github.com/redomino/redomino.social',
       license='GPL',
       packages=find_packages(exclude=['ez_setup']),
       namespace_packages=['redomino'],
