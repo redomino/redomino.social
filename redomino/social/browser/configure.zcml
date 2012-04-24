@@ -7,4 +7,12 @@
     i18n_domain="redomino.social">
 
 
+    <browser:viewlet
+        name="redomino.social_metadata"
+        manager="plone.app.layout.viewlets.interfaces.IHtmlHead"
+        layer="sc.social.like.interfaces.ISocialLikeLayer"
+        class=".viewlets.SocialMetadataViewlet"
+        permission="zope.Public"
+        />
+
 </configure>

@@ -1,9 +1,9 @@
-<dl class="portlet portletBookmarkPortlet"                                    
-    i18n:domain="redomino.bookmarks"                                          
+<dl class="portlet portletSocialPortlet"                                    
+    i18n:domain="redomino.social"                                          
     tal:define="portal_url python:context.restrictedTraverse('@@plone_portal_state').portal_url();
                 actual_url request/ACTUAL_URL|nothing;                        
                 query_string request/QUERY_STRING|nothing;"                   
-    >                                          
+    tal:attributes="class view/classes">                                          
                                                                               
     <dt class="portletHeader" tal:condition="nothing">                                                
         <span class="portletTopLeft"></span>                                  
@@ -36,6 +36,7 @@
                            vbutton view/typebutton">
         <iframe tal:attributes="src python:'//www.facebook.com/plugins/like.php?href=%s&amp;send=false&amp;layout=%s&amp;show_faces=true&amp;action=%s' %(here.absolute_url(),button[str(vbutton)],view.fbaction)"
                                 scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:21px; width: 120px;" allowTransparency="true"></iframe>
+
     </tal:fb>
 
     <tal:pinterest
@@ -43,41 +44,44 @@
         tal:define="button python:{'vertical':'box_count','horizontal':'button_count'};
                            vbutton view/typebutton">
         <span>
-            <script type='text/javascript'>
-            (function() {
-                window.PinIt = window.PinIt || { loaded:false };
-                if (window.PinIt.loaded) return;
-                window.PinIt.loaded = true;
-                function async_load(){
-                    var s = document.createElement('script');
-                    s.type = 'text/javascript';
-                    s.async = true;
-                    if (window.location.protocol == 'https:')
-                        s.src = 'https://assets.pinterest.com/js/pinit.js';
-                    else
-                        s.src = 'http://assets.pinterest.com/js/pinit.js';
-                    var x = document.getElementsByTagName('script')[0];
-                    x.parentNode.insertBefore(s, x);
-                }
-                if (window.attachEvent)
-                    window.attachEvent('onload', async_load);
-                else
-                    window.addEventListener('load', async_load, false);
-            })();
-            </script>
+<!--            <script type='text/javascript'>-->
+<!--            (function() {-->
+<!--                window.PinIt = window.PinIt || { loaded:false };-->
+<!--                if (window.PinIt.loaded) return;-->
+<!--                window.PinIt.loaded = true;-->
+<!--                function async_load(){-->
+<!--                    var s = document.createElement('script');-->
+<!--                    s.type = 'text/javascript';-->
+<!--                    s.async = true;-->
+<!--                    if (window.location.protocol == 'https:')-->
+<!--                        s.src = 'https://assets.pinterest.com/js/pinit.js';-->
+<!--                    else-->
+<!--                        s.src = 'http://assets.pinterest.com/js/pinit.js';-->
+<!--                    var x = document.getElementsByTagName('script')[0];-->
+<!--                    x.parentNode.insertBefore(s, x);-->
+<!--                }-->
+<!--                if (window.attachEvent)-->
+<!--                    window.attachEvent('onload', async_load);-->
+<!--                else-->
+<!--                    window.addEventListener('load', async_load, false);-->
+<!--            })();-->
+<!--            </script>-->
             <!-- Pinterest button Start -->
             <a class='pin-it-button' count-layout='horizontal'
-                tal:attributes="href string: http://pinterest.com/pin/create/button/?url=${context/absolute_url}">Pin It</a>
+                tal:attributes="href string: http://pinterest.com/pin/create/button/?url=${context/absolute_url};
+                                count-layout python: str(vbutton)   ">Pin It</a>
             <!-- Pinterest button End -->
         </span>
     </tal:pinterest>
 
     <tal:linkedin
         tal:condition="view/linkedin_enabled"
-        tal:define="button python:{'vertical':'box_count','horizontal':'button_count'};
+        tal:define="button python:{'vertical':'top','horizontal':'right'};
                            vbutton view/typebutton">
-        <span style="padding-right: 30px">
-        <script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="right"></script>
+        <span>
+<!--        <script type="text/javascript" src="http://platform.linkedin.com/in.js"></script>-->
+        <script type="in/share" data-counter="right"
+                tal:attributes="data-counter python:button[str(vbutton)]"></script>
         </span>
     </tal:linkedin>
 </div>

@@ -77,7 +77,9 @@ class Renderer(base.Renderer):
         
         pp = getToolByName(context, 'portal_properties')
         self.sheet = getattr(pp, 'sc_social_likes_properties', None)
-        
+
+
+        self.enabled_portal_types = self.sheet.getProperty("enabled_portal_types", [])
         self.typebutton = self.sheet.getProperty("typebutton", "")
         self.twitter_enabled = self.sheet.getProperty("twitter_enabled", True)
         self.twittvia = self.sheet.getProperty("twittvia", "")
@@ -98,6 +100,15 @@ class Renderer(base.Renderer):
         if not self.portal_state.anonymous():
             return False
         return True
+
+    @property
+    def available(self):
+        context = self.context
+        enabled_portal_types = self.enabled_portal_types
+        return context.portal_type in enabled_portal_types
+
+    def classes(self):
+        return "portlet portletSocialPortlet %s" % self.typebutton
 
 class AddForm(base.NullAddForm):
     """Portlet add form. """
