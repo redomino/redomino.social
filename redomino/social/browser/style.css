@@ -1,0 +1,33 @@
+
+/*
+Use:
+#portal-column-one, #portal-column-two
+for social plugin in the columns
+
+.horizontal means the counter is horizontal
+.vertical means the counter is on the top of the button
+
+*/
+
+/*position*/
+
+.social-button{
+    float:left;
+}
+#portal-column-one .horizontal .social-button,
+#portal-column-two .horizontal .social-button{
+    float:none;
+    margin: auto;
+}
+
+/*size*/
+
+.horizontal .social-button{
+    width:130px;
+    height:28px;
+}
+
+.vertical .social-button{
+    width:78px;
+    height:70px;
+}
